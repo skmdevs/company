@@ -1,0 +1,25 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <img src="{% static 'images/pas_logo.png' %}" alt="Logo" height="60" width="80">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'profil' %}">Profil <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'employee_list' %}">Struktur Organisasi</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'warga_binaan' %}">Warga Binaan </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'employee_list' %}">Pegawai </a>
+      </li>
+    </ul>
+  </div>
+</nav>

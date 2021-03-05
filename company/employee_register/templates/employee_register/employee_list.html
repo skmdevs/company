@@ -1,0 +1,48 @@
+{% extends 'company_profile/index.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-10 offset-md-1 mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">Daftar Pegawai</h1>
+            <p class="lead">Lapas Kelas I Sukamiskin</p>
+            <hr class="my-4">
+            <table class="table table-borderless">
+                <thead class="border-bottom font-weight-bold">
+                    <tr>
+                        <td>Nama Lengkap</td>
+                        <td>Nomor Handphone</td>
+                        <td>NIP</td>
+                        <td>Position</td>
+                        <td>
+                            <a href="{% url 'employee_insert' %}" class="btn btn-outline-success">
+                                <i class="fas fa-plus"> Tambah Baru</i>
+                            </a>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for employee in employee_list %}
+                    <tr>
+                        <td>{{employee.employee_fullname}}</td>
+                        <td>{{employee.employee_mobile}}</td>
+                        <td>{{employee.employee_code}}</td>
+                        <td>{{employee.employee_position}}</td>
+                        <td>
+                            <a href="{% url 'employee_update' employee.id %}" class="btn text-secondary px-0"><i
+                                    class="far fa-edit fa-lg"></i></a>
+                            <form action="{% url 'employee_delete' employee.id %}" method="post" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn">
+                                    <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}
